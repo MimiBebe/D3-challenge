@@ -4,7 +4,7 @@ var svgHeight = window.innerHeight;
 var margin = {
   top: 20,
   right: 40,
-  bottom: 60,
+  bottom: 80,
   left: 100
 };
 
@@ -27,8 +27,8 @@ var chosenYAxis = "obesity";
 //Create scale functions
 function returnXScale(data, chosenXAxis) {
     var xLinearScale = d3.scaleLinear()
-        .domain([d3.min(data, d => d[chosenXAxis]) * 0.8,
-        d3.max(data, d => d[chosenXAxis]) * 1.
+        .domain([d3.min(data, d => d[chosenXAxis]) * 0.5,
+        d3.max(data, d => d[chosenXAxis]) * 1.5
         ])
         .range([0, width]);
     return xLinearScale;
@@ -68,11 +68,15 @@ function renderXAxes(newXScale, xAxis) {
   
   // function used for updating circles group with a transition to
   // new circles
-function renderCircles(circlesGroup, newXScale, chosenXAxis) {
+function renderCircles(circlesGroup, newXScale, chosenXAxis,newYScale, chosenYAxis) {
   
     circlesGroup.transition()
       .duration(1000)
       .attr("cx", d => newXScale(d[chosenXAxis]));
+
+      circlesGroup.transition()
+      .duration(1000)
+      .attr("cx", d => newYScale(d[chosenYAxis]));    
   
     return circlesGroup;
   }
