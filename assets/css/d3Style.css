@@ -1,6 +1,6 @@
 .aText {
   font-family: sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   text-anchor: middle;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .d3-tip {
-  padding: 6px;
+  padding: 8px;
   font-size: 12px;
   line-height: 1;
   line-height: 1.5em;
